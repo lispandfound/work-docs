@@ -6,11 +6,23 @@
 
 = Title Slide
 = Context
-== What we do at QuakeCoRE
+== What we do
+- We (who?) support earthquake researchers at UC in Civil Nat. Res department.
+- The primary software application is ground motion simulation.
+#pause
+SPECTRUM DIAGRAM HERE
 == Scale of NZ Cybershake
-test slide 2 content
+- Simulations of possible future events in the NSHM.
+- Thousands of events simulated dozens of times each.
+- Fixed workflow with millions of core-hours.
+== Custom Researcher Workflows
+- Unique workflows using components developed by RSE team.
+- Possibly limited HPC background.
+- Rapidly iterating.
 == The Old Simulation Stack
-test slide 1 content
+- Cybershake-first, researcher second. Inflexible.
+- Everything custom. NIH syndrome.
+- Complicated environment. Brittle and difficult to reproduce.
 = Technical Modernisation
 == Container + Workflow + Realisation = Simulation
 == Containerisation
