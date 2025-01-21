@@ -1,5 +1,9 @@
 #import "@preview/touying:0.5.5": *
 #import themes.simple: *
+#import "@preview/pintorita:0.1.3"
+#show raw.where(lang: "pintora"): it => image.decode(
+  pintorita.render-svg(it.text, style: "default"),
+)
 
 #show: simple-theme.with(aspect-ratio: "16-9")
 
@@ -25,6 +29,9 @@ SPECTRUM DIAGRAM HERE
 - Complicated environment. Brittle and difficult to reproduce.
 = Technical Modernisation
 == Container + Workflow + Realisation = Simulation
+- *Container*: Exactly specifies the software stack in a reproducible fashion.
+- *Workflow*: Declaratively specifies how the software is executed (control flow).
+- *Realisation*: Declaratively specifies the scientific parameters in the workflow.
 == Containerisation
 == Cylc workflows
 == One-File Simulation Specification
