@@ -1,0 +1,95 @@
+kaikoura2016:
+  type: article
+  title: Ground‐Motion Observations from the 14 November 2016 Mw 7.8 Kaikoura, New Zealand, Earthquake and Insights from Broadband Simulations
+  author:
+  - Bradley, Brendon A.
+  - Razafindrakoto, Hoby N. T.
+  - Polak, Viktor
+  date: 2017
+  page-range: 740–756
+  url: https://doi.org/10.1785/0220160225
+  serial-number:
+    doi: 10.1785/0220160225
+    issn: 0895-0695
+  abstract: This article provides insights into the observed ground‐motion records from the 14 November 2016 Mw 7.8 Kaikoura earthquake. Specific detail is given in examining observations in the near source and those in the urban Wellington and Lower Hutt regions through a combination of time series and response spectra to help in understanding salient source, path, and site effects. Several ground motions exceeding 1.0g horizontal are recorded, as well as up to 2.7g in the vertical direction at one location. The complexity associated with multifault rupture is clearly evident in several strong‐motion stations in the near‐source region. Significant site‐effect case histories from sedimentary and reclaimed soil deposits and topographic effects are observed in the Wellington and Lower Hutt regions. To provide further insights, predictions from preliminary broadband ground‐motion simulations are examined to more directly interpret the observations.
+  parent:
+    type: periodical
+    title: Seismological Research Letters
+    issue: 3
+    volume: 88
+
+
+graves2010:
+  type: article
+  title: Broadband Ground-Motion Simulation Using a Hybrid Approach
+  author:
+  - Graves, Robert W.
+  - Pitarka, Arben
+  date: 2010
+  page-range: 2095–2123
+  url: https://doi.org/10.1785/0120100057
+  serial-number:
+    doi: 10.1785/0120100057
+    issn: 0037-1106
+  abstract: This paper describes refinements to the hybrid broadband ground-motion simulation methodology of Graves and Pitarka (2004), which combines a deterministic approach at low frequencies (f&lt;1 Hz) with a semistochastic approach at high frequencies (f&gt;1 Hz). In our approach, fault rupture is represented kinematically and incorporates spatial heterogeneity in slip, rupture speed, and rise time. The prescribed slip distribution is constrained to follow an inverse wavenumber-squared fall-off and the average rupture speed is set at 80% of the local shear-wave velocity, which is then adjusted such that the rupture propagates faster in regions of high slip and slower in regions of low slip. We use a Kostrov-like slip-rate function having a rise time proportional to the square root of slip, with the average rise time across the entire fault constrained empirically. Recent observations from large surface rupturing earthquakes indicate a reduction of rupture propagation speed and lengthening of rise time in the near surface, which we model by applying a 70% reduction of the rupture speed and increasing the rise time by a factor of 2 in a zone extending from the surface to a depth of 5 km. We demonstrate the fidelity of the technique by modeling the strong-motion recordings from the Imperial Valley, Loma Prieta, Landers, and Northridge earthquakes.
+  parent:
+    type: periodical
+    title: Bulletin of the Seismological Society of America
+    issue: 5A
+    volume: 100
+
+
+
+shaw2007:
+  type: article
+  title: Probabilities for jumping fault segment stepovers
+  author:
+  - Shaw, Bruce E.
+  - Dieterich, James H.
+  date: 2007-01
+  url: http://dx.doi.org/10.1029/2006GL027980
+  serial-number:
+    doi: 10.1029/2006gl027980
+    issn: 1944-8007
+  parent:
+    type: periodical
+    title: Geophysical Research Letters
+    publisher: American Geophysical Union (AGU)
+    issue: 1
+    volume: 34
+
+
+wilson1996generating:
+  type: article
+  title: Generating random spanning trees more quickly than the cover time
+  author: Wilson, David Bruce
+  date: 1996
+  page-range: 296–303
+  parent:
+    type: proceedings
+    title: Proceedings of the twenty-eighth annual ACM symposium on Theory of computing
+
+atzori2012:
+  type: article
+  title: 'The 2010–2011 Canterbury, New Zealand, seismic sequence: Multiple source analysis from InSAR data and modeling'
+  author:
+  - Atzori, S.
+  - Tolomei, C.
+  - Antonioli, A.
+  - Merryman Boncori, J. P.
+  - Bannister, S.
+  - Trasatti, E.
+  - Pasquali, P.
+  - Salvi, S.
+  date: 2012
+  page-range: ''
+  url: https://agupubs.onlinelibrary.wiley.com/doi/abs/10.1029/2012JB009178
+  serial-number:
+    doi: https://doi.org/10.1029/2012JB009178
+  abstract: The 2010–2011 Canterbury sequence is a complex system of seismic events that started with a Mw7.1 earthquake and continued with large aftershocks with dramatic consequences, particularly for the city of Christchurch. We model the main earthquakes using InSAR data, providing displacement maps and the respective modeling for the September 4th, 2010, February 22nd, 2011 and June 13th, 2011 events. Relocated aftershocks, field and GPS surveys are used to constrain models obtained by inversion of InSAR data; the fault slip distribution is retrieved with a variable patch size approach aimed at maximizing the spatial resolution on the fault plane. For the September 2010 earthquake we estimated significant slip values below 10 km depth; the calamitous February 2011 event in Christchurch is modeled with a double fault source with slip values less than 2 m down to 7 km depth; for the second June 13th event in Christchurch we identified a NW-SE striking fault as responsible for the earthquake. Last, we introduce the use of InSAR coherence maps to quickly detect the areas subject to soil liquefaction in Christchurch, as shown for the two main events.
+  parent:
+    type: periodical
+    title: 'Journal of Geophysical Research: Solid Earth'
+    issue: B8
+    volume: 117
+
