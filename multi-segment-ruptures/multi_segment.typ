@@ -105,7 +105,7 @@ Both enhancements would require empirical data to develop appropriate probabilit
 We use the first-order model of @shaw2007 to estimate the probability that a rupture jumps from $S_i$ to $S_j$ with the functional form
 
 $
-  P(#text([Segment $S_i$ jumps to $S_j$ at distance $r$])) = e^(-r / r_0),
+  P(#text([Segment $S_i$ jumps to $S_j$ at distance $r "km"$])) = e^(-r / r_0),
 $ <eq-jump-probability>
 
 where $r_0 = 3$ is assumed from limited data. This model informs the rupture propagation algorithm described in @rupture-propagation.
@@ -215,8 +215,8 @@ kinematic rupture generator for single planar faults, we seek to
 validate it independently against historical events. We consider two
 main validation approaches:
 
-1. Examination of rupture jumping probability distributions across historical and potential future events.
-2. Analysis of how fault-jumping time delays affect overall source rupture duration across historical and potential future events.
+1. Examination of segment-jumping probability distributions across historical and potential future events.
+2. Analysis of how segment-jumping time delays affect overall source rupture duration across historical and potential future events.
 
 Our primary application is simulating ruptures from the 2022 New Zealand
 National Seismic Hazard Model (NZ NSHM), so we apply the method to
