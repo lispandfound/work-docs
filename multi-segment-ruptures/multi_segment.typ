@@ -1,5 +1,6 @@
 #show link: this => text(this, fill: blue)
 #set heading(numbering: "1.")
+#set math.equation(numbering: "1.")
 #set text(
   font: "New Computer Modern",
   size: 10pt,
@@ -48,11 +49,11 @@ Several variables affect the transformation from segment geometry to slip model:
 2. The method to apportion moment to individual segments,
 3. The between-segment jumping model,
 4. The method used to estimate the probability of jumping between segments, and
-5. The paths the rupture takes from the initial source to all all other sources (collectively referred to as the _rupture propagation tree_ or _rupture causality tree_).
+5. The paths the rupture takes from the initial source to all other sources (collectively referred to as the _rupture propagation tree_ or _rupture causality tree_).
 
 The on-segment slip modeling follows the process described by @graves2010 and is implemented in the `genslip-v5.4.2` binary. We use this implementation without modification.
-Between-segment segment jumping determines where and when a rupture jumps between two segments. Our analysis considers only kinematic segment jumping.
-The rupture causality tree defines which segment triggers which other segment. For a given set of segments, many rupture causality trees may exist, but only some are plausable given the jumping model and jumping probabilities. We explore several approaches to determining rupture causality trees.
+Between-segment jumping determines where and when a rupture jumps between two segments. Our analysis considers only kinematic segment jumping.
+The rupture causality tree defines which segment triggers which other segment. For a given set of segments many rupture causality trees may exist, but only some are plausible given the jumping model and jumping probabilities. We explore several approaches to determining rupture causality trees.
 Each component of this problem involves multiple parameters that require optimisation and validation.
 
 Our algorithm for generating the slip model follows these steps:
@@ -67,38 +68,45 @@ Our algorithm for generating the slip model follows these steps:
 
 Given a total moment for an event, $M_0$, and a set of participating segments $S_i$ with area $A_i "km"^2$, we assign the moment $M_i$ for $S_i$ according to its area
 
-$ M_i = M_0 A_i / (sum_i A_i). $
+$ M_i = M_0 A_i / (sum_i A_i). $ <eq-moment-distribution>
 
 This model ensures that the total moment for the rupture is still $M_0$.
 
 == Future Development
 
-1. Introduce uncertaintity for $M_i$.
-2. Explore other functional forms for determining segment moment.
+- Introduce uncertaintity for $M_i$.
+- Explore other functional forms for determining segment moment.
 
-= Rupture Jumping <jump-section>
+= Segment Jumping <jump-section>
 
-We model rupture segment jumping between two segments as occurring between their closest points. While both the timing and location of jumping could later incorporate uncertainty, we have adopted a simplified model at this stage.
-The segment jumping process is illustrated in @rupture-jumping. We do not consider jumps between segments separated by more than 15 km.
+We model a rupture jumping between segments as occurring between their closest points. We make a further simplifying assumption that a segment cannot be triggered more than once in the same rupture. While both the timing and location of jumping could later incorporate uncertainty, we have adopted a simplified model at this stage.
+The segment jumping process is illustrated in @segment-jumping. We do not consider jumps between segments separated by more than 15 km.
+
 #figure(
   image("rupture_jump.png", width: 60%),
-  caption: [A pair of segments, with their closest points marked A and B. Assuming the segment containing A is the initial segment, the rupture triggers a rupture on the subsequent segment at B.],
-) <rupture-jumping>
-The rupture time at point B equals the rupture time of point A in the SRF. We make a further simplifying assumption that a segment cannot be triggered more than once in the same rupture.
+  caption: [A pair of segments, with their closest points marked A and B. Assuming the segment containing A is the initial segment, the rupture triggers the subsequent segment at B.],
+) <segment-jumping>
+The rupture time at point B in @segment-jumping is calculated as:
+
+$ T_r + d / V_s, $ <eq-rupture-delay>
+
+where $T_r$ is the initial rupture time at A, $d$ the distance in kilometres between A and B, and $V_s$ the average rupture speed between $A$ and $B$. We assume $V_s = 3500 "km/s"$. The segment delay calculation could also be made stochastic in the future developments.
 
 == Future Developments
 This model could be enhanced in two key areas:
 
-1. Introduction of uncertainty in segment jumping locations, both at the origin on the parent segment and at the destination on the subsequent segment.
-2. Implementation of variable time delays in segment jumping events.
+- Introduction of uncertainty in segment jumping locations, both at the origin on the parent segment and at the destination on the subsequent segment.
+- Implementation of variable time delays in segment jumping events.
 
 Both enhancements would require empirical data to develop appropriate probability distributions for modeling these variations.
 
 = Jumping Probabilities <probability-section>
 
-We use the first-order model of @shaw2007 to estimate the probabality that a rupture jumps from $S_i$ to $S_j$ with the functional form
+We use the first-order model of @shaw2007 to estimate the probability that a rupture jumps from $S_i$ to $S_j$ with the functional form
 
-$ P(#text([Segment $S_i$ jumps to $S_j$ at distance $r$])) = e^(-r / r_0), $
+$
+  P(#text([Segment $S_i$ jumps to $S_j$ at distance $r$])) = e^(-r / r_0),
+$ <eq-jump-probability>
 
 where $r_0 = 3$ is assumed from limited data. This model informs the rupture propagation algorithm described in @rupture-propagation.
 
@@ -106,8 +114,8 @@ where $r_0 = 3$ is assumed from limited data. This model informs the rupture pro
 == Future Development
 We could further improve this model by:
 
-1. Refining the $r_0$ variable, because @shaw2007 admits to using only limited data to arrive at $r_0 = 3$.
-2. Using a more complicated model that accounts for jumping between segments with differing strike, dip or other characteristics.
+- Refining the $r_0$ variable, because @shaw2007 admits to using only limited data to arrive at $r_0 = 3$.
+- Using a more complicated model that accounts for jumping between segments with differing strike, dip or other characteristics.
 
 = Rupture Propagation <rupture-propagation>
 
@@ -140,7 +148,7 @@ The graph theory-based algorithm samples rupture causality trees $T$ according t
 
 $
   P(T) prop product_((S, S') in T) P(#text([$S$ triggers $S'$])) product_((S, S') in.not T) (1 - P(#text([$S$ triggers $S'$]))),
-$
+$ <eq-tree-probability>
 
 where $(S, S') in T$ if and only if the segment $S'$ is triggered by the segment $S$ in the tree described by $T$. Using this probability distribution over rupture trees, we have two sampling methods:
 
@@ -198,8 +206,47 @@ In @tree-probability-distribution, we present the probability distribution for t
 
 == Future Development
 
-1. Introduce asymmetric jumping probabilities. Currently the code for the graph-based model assumes $P(#text([$S$ triggers $S'$])) = P(#text([$S'$ triggers $S$]))$. Variants of Wilson's algorithm allow for asymmetric jumping probabilities.
-2. Support restricting the rupture trees to simple paths. This is computationally expensive compared to the tree approach.
+- Introduce asymmetric jumping probabilities. Currently, the code for the graph-based model assumes $P(#text([$S$ triggers $S'$])) = P(#text([$S'$ triggers $S$]))$. Variants of Wilson's algorithm allow for asymmetric jumping probabilities.
+- Support restricting the rupture trees to simple paths. This is computationally expensive compared to the tree approach.
+
+= Validation of the Approach
+Although our approach represents a simple extension of the genslip
+kinematic rupture generator for single planar faults, we seek to
+validate it independently against historical events. We consider two
+main validation approaches:
+
+1. Examination of rupture jumping probability distributions across historical and potential future events.
+2. Analysis of how fault-jumping time delays affect overall source rupture duration across historical and potential future events.
+
+Our primary application is simulating ruptures from the 2022 New Zealand
+National Seismic Hazard Model (NZ NSHM), so we apply the method to
+fault geometries from this seismic source model. We additionally use the
+#link("http://equake-rc.info/srcmod/")[SRCMOD] database as a catalogue
+of finite fault rupture inversions. While we have not yet applied our
+generation method to SRCMOD fault geometries, we use the SRCMOD inverted
+faults for a preliminary comparison with the NZ NSHM sources.
+
+@srcmod-comparison compares the total rupture durations—defined as the
+time interval containing 5% to 95% of the total moment release—between
+NZ NSHM sources and the SRCMOD database. The results show broad agreement
+except for the largest ruptures in the NZ NSHM. These ruptures, including
+but not limited to Alpine Fault scenarios, exhibit larger length-to-width
+(L/W) ratios than those in the SRCMOD database. @ratios illustrates how
+rupture durations relate to L/W ratios after accounting for magnitude
+effects.
+
+#figure(
+  image("./srcmod_comparison_groups.png", width: 60%),
+  caption: [Comparison of rupture release times between selected slip models generated for ruptures from the NZ NSHM and the SRCMOD database. Generated slip models for the Darfield and Kaikōura ruptures are highlighted.],
+) <srcmod-comparison>
+
+#figure(
+  image("./aspect_ratio.png", width: 60%),
+  caption: [The relationship between moment release and length-to-width ratios for selected slip models from the NZ NSHM.],
+) <ratios>
+
+== Future development
+- Apply rupture generator to specific geometries in the SRCMOD database to enable direct comparison of results.
 
 #bibliography("bib.yml", style: "springer-basic-author-date")
 

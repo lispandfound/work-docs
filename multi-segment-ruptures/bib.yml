@@ -7,7 +7,6 @@ kaikoura2016:
   - Polak, Viktor
   date: 2017
   page-range: 740–756
-  url: https://doi.org/10.1785/0220160225
   serial-number:
     doi: 10.1785/0220160225
     issn: 0895-0695
@@ -27,7 +26,6 @@ graves2010:
   - Pitarka, Arben
   date: 2010
   page-range: 2095–2123
-  url: https://doi.org/10.1785/0120100057
   serial-number:
     doi: 10.1785/0120100057
     issn: 0037-1106
@@ -47,7 +45,6 @@ shaw2007:
   - Shaw, Bruce E.
   - Dieterich, James H.
   date: 2007-01
-  url: http://dx.doi.org/10.1029/2006GL027980
   serial-number:
     doi: 10.1029/2006gl027980
     issn: 1944-8007
@@ -83,9 +80,8 @@ atzori2012:
   - Salvi, S.
   date: 2012
   page-range: ''
-  url: https://agupubs.onlinelibrary.wiley.com/doi/abs/10.1029/2012JB009178
   serial-number:
-    doi: https://doi.org/10.1029/2012JB009178
+    doi: 10.1029/2012JB009178
   abstract: The 2010–2011 Canterbury sequence is a complex system of seismic events that started with a Mw7.1 earthquake and continued with large aftershocks with dramatic consequences, particularly for the city of Christchurch. We model the main earthquakes using InSAR data, providing displacement maps and the respective modeling for the September 4th, 2010, February 22nd, 2011 and June 13th, 2011 events. Relocated aftershocks, field and GPS surveys are used to constrain models obtained by inversion of InSAR data; the fault slip distribution is retrieved with a variable patch size approach aimed at maximizing the spatial resolution on the fault plane. For the September 2010 earthquake we estimated significant slip values below 10 km depth; the calamitous February 2011 event in Christchurch is modeled with a double fault source with slip values less than 2 m down to 7 km depth; for the second June 13th event in Christchurch we identified a NW-SE striking fault as responsible for the earthquake. Last, we introduce the use of InSAR coherence maps to quickly detect the areas subject to soil liquefaction in Christchurch, as shown for the two main events.
   parent:
     type: periodical
