@@ -90,7 +90,7 @@ The rupture time at point B in @segment-jumping is calculated as:
 
 $ T_r + d / V_s, $ <eq-rupture-delay>
 
-where $T_r$ is the initial rupture time at A, $d$ the distance in kilometres between A and B, and $V_s$ the average rupture speed between $A$ and $B$. We assume $V_s = 3500 "km/s"$. The segment delay calculation could also be made stochastic in the future developments.
+where $T_r$ is the initial rupture time at A, $d$ the distance in kilometres between A and B, and $V_s$ the average rupture speed between $A$ and $B$. We assume $V_s = 3.5 "km/s"$. The segment delay calculation could also be made stochastic in the future developments.
 
 == Future Developments
 This model could be enhanced in two key areas:
