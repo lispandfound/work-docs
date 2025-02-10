@@ -13,60 +13,82 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide">
-<h1 class="title">Modernising Earthquake Simulation Workflows</h1><p class="date">Created: 2025-02-10 Mon 15:50</p>
-</section>
 <section>
-<section id="slide-orga1b62ed">
-<h2 id="orga1b62ed">Context</h2>
-<div class="outline-text-2" id="text-orga1b62ed">
+<section id="slide-orgf523e78">
+<h2 id="orgf523e78">Modernising Earthquake Simulation Workflows</h2>
+<p>
+Jake Faulkner
+</p>
+<div style="display: grid; grid-template-columns: auto auto auto;">
+
+<div id="org3d0c636" class="figure">
+<p><img src="coat-of-arms-uc.jpeg" alt="coat-of-arms-uc.jpeg" width="80%" />
+</p>
+</div>
+
+<div id="orgf7c9f38" class="figure">
+<p><img src="coat-of-arms-uc.jpeg" alt="coat-of-arms-uc.jpeg" width="80%" />
+</p>
+</div>
+
+<div id="org2ab78a6" class="figure">
+<p><img src="coat-of-arms-uc.jpeg" alt="coat-of-arms-uc.jpeg" width="80%" />
+</p>
+</div>
 </div>
 </section>
-<section id="slide-org4b7bc7d">
-<h3 id="org4b7bc7d">What We Do</h3>
+</section>
+<section>
+<section id="slide-org0eed923">
+<h2 id="org0eed923">Context</h2>
+<div class="outline-text-2" id="text-org0eed923">
+</div>
+</section>
+<section id="slide-org3434519">
+<h3 id="org3434519">What We Do</h3>
 <ul>
 <li>Support earthquake researchers at UC Civil and Natural Resources Engineering department.</li>
 <li>Primary focus: Ground motion simulation software.</li>
 
 </ul>
 </section>
-<section id="slide-orgdebe71a">
-<h3 id="orgdebe71a">Cybershake New Zealand</h3>
+<section id="slide-org45789b3">
+<h3 id="org45789b3">Cybershake New Zealand</h3>
 <iframe height="600" width="800" src="https://www.youtube.com/embed/P7t2u61daPg?si=lIqavPHDV0hXl-Gu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </section>
-<section id="slide-org87bdca9">
-<h3 id="org87bdca9">Researcher Outputs</h3>
+<section id="slide-org4b850b7">
+<h3 id="org4b850b7">Researcher Outputs</h3>
 
-<div id="org6c90f1c" class="figure">
+<div id="org6ff2eb3" class="figure">
 <p><img src="researcher.png" alt="researcher.png" />
 </p>
 </div>
 </section>
-<section id="slide-org72abea5">
-<h3 id="org72abea5">Big Picture</h3>
+<section id="slide-orgf86c98a">
+<h3 id="orgf86c98a">Big Picture</h3>
 <dl>
 <dt class="fragment fade-in">Cybershake NZ</dt><dd class="fragment fade-in">Better estimates of seismic hazard; inform EQC and disaster response.</dd>
-<dt class="fragment fade-in">Researcher outputs</dt><dd class="fragment fade-in">Advance geoscience; improve Cybershake</dd>
+<dt class="fragment fade-in">Researcher outputs</dt><dd class="fragment fade-in">Advance geoscience; improve Cybershake.</dd>
 
 </dl>
 </section>
 </section>
 <section>
-<section id="slide-org765fab5">
-<h2 id="org765fab5">The Old Simulation Stack</h2>
-<div class="outline-text-2" id="text-org765fab5">
+<section id="slide-org939dfe8">
+<h2 id="org939dfe8">The Old Simulation Stack</h2>
+<div class="outline-text-2" id="text-org939dfe8">
 </div>
 </section>
-<section id="slide-orgc2a4c5f">
-<h3 id="orgc2a4c5f">Basic Structure</h3>
+<section id="slide-org66399b5">
+<h3 id="org66399b5">Basic Structure</h3>
 
-<div id="orge55c661" class="figure">
+<div id="org53ac52c" class="figure">
 <p><img src="old_workflow.png" alt="old_workflow.png" />
 </p>
 </div>
 </section>
-<section id="slide-orga9f52d6">
-<h3 id="orga9f52d6">The Problems</h3>
+<section id="slide-orgd9ddfcc">
+<h3 id="orgd9ddfcc">The Problems</h3>
 <ul>
 <li class="fragment fade-in">Cybershake-centric, unfriendly to researchers.</li>
 <li class="fragment fade-in">Entirely custom solutions for solved problems.</li>
@@ -77,8 +99,8 @@
 </section>
 <section>
 </section>
-<section id="slide-orgdcca852">
-<h3 id="orgdcca852">Reproducing a Three-Year-Old Simulation</h3>
+<section id="slide-org519818d">
+<h3 id="org519818d">Reproducing a Three-Year-Old Simulation</h3>
 <ol>
 <li class="fragment fade-in">Required our team lead one year,</li>
 <li class="fragment fade-in">Involved special tools to re-derive input values,</li>
@@ -86,20 +108,20 @@
 
 </ol>
 
-<div id="org70a5337" class="figure">
+<div id="org26ff592" class="figure">
 <p><img src="sung.jpg" alt="sung.jpg" class="fragment (fade-in)" />
 </p>
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org1b93412">
-<h2 id="org1b93412">The New Workflow</h2>
-<div class="outline-text-2" id="text-org1b93412">
+<section id="slide-orgc7d29bc">
+<h2 id="orgc7d29bc">The New Workflow</h2>
+<div class="outline-text-2" id="text-orgc7d29bc">
 </div>
 </section>
-<section id="slide-orge51d95a">
-<h3 id="orge51d95a">Container + Workflow + Realisation = Simulation</h3>
+<section id="slide-orgd4fad4a">
+<h3 id="orgd4fad4a">Container + Workflow + Realisation = Simulation</h3>
 <ul>
 <li><b>Container</b>: Reproducible software stack specification.</li>
 <li><b>Workflow</b>: Declarative software execution control.</li>
@@ -107,8 +129,8 @@
 
 </ul>
 </section>
-<section id="slide-org127a531">
-<h3 id="org127a531">Containerisation</h3>
+<section id="slide-org03175a6">
+<h3 id="org03175a6">Containerisation</h3>
 <ul>
 <li>Apptainer containers for software deployment.</li>
 <li>All workflow stages within containers.</li>
@@ -116,8 +138,8 @@
 
 </ul>
 </section>
-<section id="slide-org5de924a">
-<h3 id="org5de924a">Cylc Workflows</h3>
+<section id="slide-org6e3b347">
+<h3 id="org6e3b347">Cylc Workflows</h3>
 <div style="float: left; width: 50%">
 <ul>
 <li class="fragment fade-in">Developed at NIWA.</li>
@@ -130,17 +152,17 @@
 
 <div style="float: right; width: 50%">
 
-<div id="org07145ea" class="figure">
+<div id="org874ea51" class="figure">
 <p><img src="cylc.gif" alt="cylc.gif" />
 </p>
 <p><span class="figure-number">Figure 1: </span>Cylc TUI in Action!</p>
 </div>
 </div>
 </section>
-<section id="slide-orgbb09ea3">
-<h3 id="orgbb09ea3">One-File Simulation Specification</h3>
+<section id="slide-org57f6733">
+<h3 id="org57f6733">One-File Simulation Specification</h3>
 
-<div id="org8a528e6" class="figure">
+<div id="org0ac056b" class="figure">
 <p><img src="config.png" alt="config.png" />
 </p>
 </div>
@@ -175,8 +197,8 @@
 </pre>
 </div>
 </section>
-<section id="slide-org2888625">
-<h3 id="org2888625">Workflow Planner</h3>
+<section id="slide-orgf87851d">
+<h3 id="orgf87851d">Workflow Planner</h3>
 <ul>
 <li>Workflow stages that compose together enables a flexible workflow planning tool.</li>
 <li>Skip or set a goal for any stage to generate custom research workflows!</li>
@@ -203,13 +225,13 @@
 </section>
 <section>
 
-<div id="orga2938d6" class="figure">
+<div id="org88aeaf9" class="figure">
 <p><img src="workflow_graph.png" alt="workflow_graph.png" />
 </p>
 </div>
 </section>
-<section id="slide-orgda9fd9c">
-<h3 id="orgda9fd9c">Hypothesis Testing</h3>
+<section id="slide-org3a1fef1">
+<h3 id="org3a1fef1">Hypothesis Testing</h3>
 <div class="org-src-container">
 
 <pre class="src src-python"><span style="color: #ECBE7B;">@given</span>(st.integers(<span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">50</span>))
@@ -220,7 +242,7 @@
 </div>
 </section>
 <section>
-<pre class="example" id="org869e839">
+<pre class="example" id="org5eea873">
 n = 40
 
     @given(st.integers(0, 50))
@@ -238,8 +260,8 @@ E       assert False
 </section>
 </section>
 <section>
-<section id="slide-orge4be245">
-<h2 id="orge4be245">Key Takeaways</h2>
+<section id="slide-org2787f86">
+<h2 id="org2787f86">Key Takeaways</h2>
 <ul>
 <li class="fragment fade-in">Make your workflows <b>declarative</b>.</li>
 <li class="fragment fade-in">Make your workflows <b>composable</b>.</li>

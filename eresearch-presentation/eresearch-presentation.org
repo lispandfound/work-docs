@@ -1,10 +1,20 @@
 #+TITLE: Modernising Earthquake Simulation Workflows
 #+AUTHOR:
 #+DATE:
+#+REVEAL_TITLE_SLIDE:
 #+OPTIONS: toc:nil num:nil
 #+REVEAL_THEME: simple
 #+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
-
+* Modernising Earthquake Simulation Workflows
+Jake Faulkner
+#+REVEAL_HTML: <div style="display: grid; grid-template-columns: auto auto auto;">
+#+ATTR_HTML: :width 80%
+[[file:coat-of-arms-uc.jpeg]]
+#+ATTR_HTML: :width 80%
+[[file:coat-of-arms-uc.jpeg]]
+#+ATTR_HTML: :width 80%
+[[file:coat-of-arms-uc.jpeg]]
+#+REVEAL_HTML: </div>
 * Context
 
 ** What We Do
