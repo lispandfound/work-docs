@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Modernising Earthquake Simulation Workflows</title>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/simple.css" id="theme"/>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide">
+<h1 class="title">Modernising Earthquake Simulation Workflows</h1><p class="date">Created: 2025-02-10 Mon 15:50</p>
+</section>
+<section>
+<section id="slide-orga1b62ed">
+<h2 id="orga1b62ed">Context</h2>
+<div class="outline-text-2" id="text-orga1b62ed">
+</div>
+</section>
+<section id="slide-org4b7bc7d">
+<h3 id="org4b7bc7d">What We Do</h3>
+<ul>
+<li>Support earthquake researchers at UC Civil and Natural Resources Engineering department.</li>
+<li>Primary focus: Ground motion simulation software.</li>
+
+</ul>
+</section>
+<section id="slide-orgdebe71a">
+<h3 id="orgdebe71a">Cybershake New Zealand</h3>
+<iframe height="600" width="800" src="https://www.youtube.com/embed/P7t2u61daPg?si=lIqavPHDV0hXl-Gu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</section>
+<section id="slide-org87bdca9">
+<h3 id="org87bdca9">Researcher Outputs</h3>
+
+<div id="org6c90f1c" class="figure">
+<p><img src="researcher.png" alt="researcher.png" />
+</p>
+</div>
+</section>
+<section id="slide-org72abea5">
+<h3 id="org72abea5">Big Picture</h3>
+<dl>
+<dt class="fragment fade-in">Cybershake NZ</dt><dd class="fragment fade-in">Better estimates of seismic hazard; inform EQC and disaster response.</dd>
+<dt class="fragment fade-in">Researcher outputs</dt><dd class="fragment fade-in">Advance geoscience; improve Cybershake</dd>
+
+</dl>
+</section>
+</section>
+<section>
+<section id="slide-org765fab5">
+<h2 id="org765fab5">The Old Simulation Stack</h2>
+<div class="outline-text-2" id="text-org765fab5">
+</div>
+</section>
+<section id="slide-orgc2a4c5f">
+<h3 id="orgc2a4c5f">Basic Structure</h3>
+
+<div id="orge55c661" class="figure">
+<p><img src="old_workflow.png" alt="old_workflow.png" />
+</p>
+</div>
+</section>
+<section id="slide-orga9f52d6">
+<h3 id="orga9f52d6">The Problems</h3>
+<ul>
+<li class="fragment fade-in">Cybershake-centric, unfriendly to researchers.</li>
+<li class="fragment fade-in">Entirely custom solutions for solved problems.</li>
+<li class="fragment fade-in">Complex, brittle, hard to reproduce.</li>
+<li class="fragment fade-in"><b>So much legacy code!</b></li>
+
+</ul>
+</section>
+<section>
+</section>
+<section id="slide-orgdcca852">
+<h3 id="orgdcca852">Reproducing a Three-Year-Old Simulation</h3>
+<ol>
+<li class="fragment fade-in">Required our team lead one year,</li>
+<li class="fragment fade-in">Involved special tools to re-derive input values,</li>
+<li class="fragment fade-in">Ultimately impossible due to changing software.</li>
+
+</ol>
+
+<div id="org70a5337" class="figure">
+<p><img src="sung.jpg" alt="sung.jpg" class="fragment (fade-in)" />
+</p>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org1b93412">
+<h2 id="org1b93412">The New Workflow</h2>
+<div class="outline-text-2" id="text-org1b93412">
+</div>
+</section>
+<section id="slide-orge51d95a">
+<h3 id="orge51d95a">Container + Workflow + Realisation = Simulation</h3>
+<ul>
+<li><b>Container</b>: Reproducible software stack specification.</li>
+<li><b>Workflow</b>: Declarative software execution control.</li>
+<li><b>Realisation</b>: Declarative scientific parameter specification.</li>
+
+</ul>
+</section>
+<section id="slide-org127a531">
+<h3 id="org127a531">Containerisation</h3>
+<ul>
+<li>Apptainer containers for software deployment.</li>
+<li>All workflow stages within containers.</li>
+<li>Archivable with future Cybershake versions.</li>
+
+</ul>
+</section>
+<section id="slide-org5de924a">
+<h3 id="org5de924a">Cylc Workflows</h3>
+<div style="float: left; width: 50%">
+<ul>
+<li class="fragment fade-in">Developed at NIWA.</li>
+<li class="fragment fade-in">Supported on HPC by NeSI.</li>
+<li class="fragment fade-in"><b>Huge</b> improvement for researcher UX.</li>
+<li class="fragment fade-in">Composable for custom workflow.</li>
+
+</ul>
+</div>
+
+<div style="float: right; width: 50%">
+
+<div id="org07145ea" class="figure">
+<p><img src="cylc.gif" alt="cylc.gif" />
+</p>
+<p><span class="figure-number">Figure 1: </span>Cylc TUI in Action!</p>
+</div>
+</div>
+</section>
+<section id="slide-orgbb09ea3">
+<h3 id="orgbb09ea3">One-File Simulation Specification</h3>
+
+<div id="org8a528e6" class="figure">
+<p><img src="config.png" alt="config.png" />
+</p>
+</div>
+</section>
+<section>
+<div class="org-src-container">
+
+<pre class="src src-bash">realisation.json
+      &#9488;
+      &#9500;&#9472;&#9472; metadata
+      &#9474;   &#9500;&#9472;&#9472; name: <span style="color: #da8548; font-weight: bold;">3468575</span>
+      &#9474;   &#9500;&#9472;&#9472; version: <span style="color: #da8548; font-weight: bold;">1</span>
+      &#9474;   &#9500;&#9472;&#9472; defaults_version: 24.2.2.2
+      &#9474;   &#9492;&#9472;&#9472; tag: gcmt
+      &#9500;&#9472;&#9472; sources
+      &#9474;   &#9492;&#9472;&#9472; source_geometries <span style="color: #51afef;">[</span>...<span style="color: #51afef;">]</span>
+      &#9500;&#9472;&#9472; rupture_propagation
+      &#9474;   &#9500;&#9472;&#9472; rupture_causality_tree <span style="color: #51afef;">[</span>...<span style="color: #51afef;">]</span>
+      &#9474;   &#9500;&#9472;&#9472; jump_points
+      &#9474;   &#9500;&#9472;&#9472; rakes <span style="color: #51afef;">[</span>...<span style="color: #51afef;">]</span>
+      &#9474;   &#9500;&#9472;&#9472; magnitudes <span style="color: #51afef;">[</span>...<span style="color: #51afef;">]</span>
+      &#9474;   &#9492;&#9472;&#9472; hypocentre <span style="color: #51afef;">[</span>...<span style="color: #51afef;">]</span>
+      &#9500;&#9472;&#9472; srf
+      &#9474;   &#9500;&#9472;&#9472; genslip_dt: <span style="color: #da8548; font-weight: bold;">0.05</span>
+      &#9474;   &#9500;&#9472;&#9472; genslip_version: 5.4.2
+      &#9474;   &#9492;&#9472;&#9472; resolution: <span style="color: #da8548; font-weight: bold;">0.2</span>
+      &#9500;&#9472;&#9472; seeds
+      &#9474;   &#9500;&#9472;&#9472; nshm_to_realisation_seed: <span style="color: #da8548; font-weight: bold;">554010839</span>
+      &#9474;   &#9500;&#9472;&#9472; rupture_propagation_seed: <span style="color: #da8548; font-weight: bold;">1355831879</span>
+      &#9474;   &#9500;&#9472;&#9472; genslip_seed: <span style="color: #da8548; font-weight: bold;">906043042</span>
+      <span style="color: #51afef;">[</span>...<span style="color: #51afef;">]</span>
+</pre>
+</div>
+</section>
+<section id="slide-org2888625">
+<h3 id="org2888625">Workflow Planner</h3>
+<ul>
+<li>Workflow stages that compose together enables a flexible workflow planning tool.</li>
+<li>Skip or set a goal for any stage to generate custom research workflows!</li>
+
+</ul>
+<div style="font-size: 60%;">
+<div class="org-src-container">
+
+<pre class="src src-bash">  $ plan-workflow 2024p910344 flow.cylc --source gcmt --goal im_calc <span style="color: #98be65;">\</span>
+      --excluding realisation_to_srf --archiving hf_sim
+  You require the following files for your simulation:
+  &#9488;
+  &#9492;&#9472;&#9472; cylc-src
+      &#9492;&#9472;&#9472; WORKFLOW_NAME
+          &#9492;&#9472;&#9472; input
+              &#9500;&#9472;&#9472; 2024p910344
+              &#9474;   &#9500;&#9472;&#9472; realisation.json
+              &#9474;   &#9474;   &#9492;&#9472;&#9472; srf: Configuration for SRF generation.
+              &#9474;   &#9492;&#9472;&#9472; realisation.srf: Contains the slip model for the realisation.
+              ...
+</pre>
+</div>
+</div>
+</section>
+<section>
+
+<div id="orga2938d6" class="figure">
+<p><img src="workflow_graph.png" alt="workflow_graph.png" />
+</p>
+</div>
+</section>
+<section id="slide-orgda9fd9c">
+<h3 id="orgda9fd9c">Hypothesis Testing</h3>
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #ECBE7B;">@given</span>(st.integers(<span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">50</span>))
+<span style="color: #51afef;">def</span> <span style="color: #c678dd;">test_prime_formula</span>(n: <span style="color: #c678dd;">int</span>):
+    <span style="color: #83898d;">"""Test Euler's formula for primes."""</span>
+    <span style="color: #51afef;">assert</span> is_prime(n**<span style="color: #da8548; font-weight: bold;">2</span> + n + <span style="color: #da8548; font-weight: bold;">41</span>)
+</pre>
+</div>
+</section>
+<section>
+<pre class="example" id="org869e839">
+n = 40
+
+    @given(st.integers(0, 50))
+    def test_prime_formula(n: int):
+&gt;       assert is_prime(n**2 + n + 41)
+E       assert False
+</pre>
+</section>
+<section>
+<ul>
+<li>Used to test thousands of examples for critical scientific code.</li>
+<li>Potentially saves hundreds of thousands of wasted core-hours.</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orge4be245">
+<h2 id="orge4be245">Key Takeaways</h2>
+<ul>
+<li class="fragment fade-in">Make your workflows <b>declarative</b>.</li>
+<li class="fragment fade-in">Make your workflows <b>composable</b>.</li>
+<li class="fragment fade-in">Automate your testing.</li>
+<li class="fragment fade-in">Design for the <b>least-savvy user</b>.</li>
+
+</ul>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/search/search.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom/zoom.js"></script>
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+mouseWheel: false,
+fragmentInURL: false,
+hashOneBasedIndex: false,
+pdfSeparateFragments: true,
+overview: true,
+
+transition: 'convex',
+transitionSpeed: 'default',
+
+// Plugins with reveal.js 4.x
+plugins: [ RevealMarkdown, RevealNotes, RevealSearch, RevealZoom ],
+
+// Optional libraries used to extend reveal.js
+dependencies: [
+]
+
+});
+</script>
+</body>
+</html>

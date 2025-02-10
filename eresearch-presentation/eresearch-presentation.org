@@ -1,0 +1,145 @@
+#+TITLE: Modernising Earthquake Simulation Workflows
+#+AUTHOR:
+#+DATE:
+#+OPTIONS: toc:nil num:nil
+#+REVEAL_THEME: simple
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
+
+* Context
+
+** What We Do
+- Support earthquake researchers at UC Civil and Natural Resources Engineering department.
+- Primary focus: Ground motion simulation software.
+
+** Cybershake New Zealand
+#+REVEAL_HTML: <iframe height="600" width="800" src="https://www.youtube.com/embed/P7t2u61daPg?si=lIqavPHDV0hXl-Gu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+** Researcher Outputs
+[[file:researcher.png]]
+** Big Picture
+#+ATTR_REVEAL: :frag (fade-in)
+- Cybershake NZ :: Better estimates of seismic hazard; inform EQC and disaster response.
+- Researcher outputs :: Advance geoscience; improve Cybershake.
+
+
+* The Old Simulation Stack
+** Basic Structure
+[[file:old_workflow.png]]
+** The Problems
+#+ATTR_REVEAL: :frag (fade-in)
+- Cybershake-centric, unfriendly to researchers.
+- Entirely custom solutions for solved problems.
+- Complex, brittle, hard to reproduce.
+- *So much legacy code!*
+#+REVEAL: split
+** Reproducing a Three-Year-Old Simulation
+#+ATTR_REVEAL: :frag (fade-in)
+  1. Required our team lead one year,
+  2. Involved special tools to re-derive input values,
+  3. Ultimately impossible due to changing software.
+#+ATTR_REVEAL: :frag (fade-in)
+[[file:sung.jpg]]
+
+* The New Workflow
+
+** Container + Workflow + Realisation = Simulation
+- *Container*: Reproducible software stack specification.
+- *Workflow*: Declarative software execution control.
+- *Realisation*: Declarative scientific parameter specification.
+
+** Containerisation
+- Apptainer containers for software deployment.
+- All workflow stages within containers.
+- Archivable with future Cybershake versions.
+
+** Cylc Workflows
+#+REVEAL_HTML: <div style="float: left; width: 50%">
+#+ATTR_REVEAL: :frag (fade-in)
+- Developed at NIWA.
+- Supported on HPC by NeSI.
+- *Huge* improvement for researcher UX.
+- Composable for custom workflow.
+#+REVEAL_HTML: </div>
+
+#+REVEAL_HTML: <div style="float: right; width: 50%">
+#+CAPTION: Cylc TUI in Action!
+[[file:cylc.gif]]
+#+REVEAL_HTML: </div>
+
+** One-File Simulation Specification
+[[file:config.png]]
+#+REVEAL: split
+#+BEGIN_SRC bash
+realisation.json
+      ┐
+      ├── metadata
+      │   ├── name: 3468575
+      │   ├── version: 1
+      │   ├── defaults_version: 24.2.2.2
+      │   └── tag: gcmt
+      ├── sources
+      │   └── source_geometries [...]
+      ├── rupture_propagation
+      │   ├── rupture_causality_tree [...]
+      │   ├── jump_points
+      │   ├── rakes [...]
+      │   ├── magnitudes [...]
+      │   └── hypocentre [...]
+      ├── srf
+      │   ├── genslip_dt: 0.05
+      │   ├── genslip_version: 5.4.2
+      │   └── resolution: 0.2
+      ├── seeds
+      │   ├── nshm_to_realisation_seed: 554010839
+      │   ├── rupture_propagation_seed: 1355831879
+      │   ├── genslip_seed: 906043042
+      [...]
+#+END_SRC
+
+** Workflow Planner
+- Workflow stages that compose together enables a flexible workflow planning tool.
+- Skip or set a goal for any stage to generate custom research workflows!
+#+REVEAL_HTML: <div style="font-size: 60%;">
+#+BEGIN_SRC bash
+  $ plan-workflow 2024p910344 flow.cylc --source gcmt --goal im_calc \
+      --excluding realisation_to_srf --archiving hf_sim
+  You require the following files for your simulation:
+  ┐
+  └── cylc-src
+      └── WORKFLOW_NAME
+          └── input
+              ├── 2024p910344
+              │   ├── realisation.json
+              │   │   └── srf: Configuration for SRF generation.
+              │   └── realisation.srf: Contains the slip model for the realisation.
+              ...
+#+END_SRC
+#+REVEAL_HTML: </div>
+#+REVEAL: split
+[[file:workflow_graph.png]]
+** Hypothesis Testing
+
+#+begin_src python
+@given(st.integers(0, 50))
+def test_prime_formula(n: int):
+    """Test Euler's formula for primes."""
+    assert is_prime(n**2 + n + 41)
+#+end_src
+#+REVEAL: split
+#+begin_example
+n = 40
+
+    @given(st.integers(0, 50))
+    def test_prime_formula(n: int):
+>       assert is_prime(n**2 + n + 41)
+E       assert False
+#+end_example
+#+REVEAL: split
+- Used to test thousands of examples for critical scientific code.
+- Potentially saves hundreds of thousands of wasted core-hours.
+
+* Key Takeaways
+#+ATTR_REVEAL: :frag (fade-in)
+- Make your workflows *declarative*.
+- Make your workflows *composable*.
+- Automate your testing.
+- Design for the *least-savvy user*.
