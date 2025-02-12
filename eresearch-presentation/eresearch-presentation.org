@@ -74,7 +74,6 @@ Jake Faulkner
 #+REVEAL_HTML: </div>
 
 #+REVEAL_HTML: <div style="float: right; width: 50%">
-#+CAPTION: Cylc TUI in Action!
 [[file:cylc.gif]]
 #+REVEAL_HTML: </div>
 
