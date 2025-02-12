@@ -7,13 +7,15 @@
 #+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
 * Modernising Earthquake Simulation Workflows
 Jake Faulkner
-#+REVEAL_HTML: <div style="display: grid; grid-template-columns: auto auto auto;">
+#+REVEAL_HTML: <div style="display: grid; grid-template-columns: auto auto auto auto;">
 #+ATTR_HTML: :width 80%
 [[file:coat-of-arms-uc.jpeg]]
 #+ATTR_HTML: :width 80%
-[[file:coat-of-arms-uc.jpeg]]
+[[file:QCLogo Standard QC 3 lines 2000ppi.png]]
 #+ATTR_HTML: :width 80%
-[[file:coat-of-arms-uc.jpeg]]
+[[file:nhc.png]]
+#+ATTR_HTML: :width 80%
+[[file:NeSI_Logo_RGB.png]]
 #+REVEAL_HTML: </div>
 * Context
 
@@ -127,7 +129,9 @@ realisation.json
 #+REVEAL: split
 [[file:workflow_graph.png]]
 ** Hypothesis Testing
-
+- Used to test thousands of examples for critical scientific code.
+- Potentially saves hundreds of thousands of wasted core-hours.
+#+REVEAL: split
 #+begin_src python
 @given(st.integers(0, 50))
 def test_prime_formula(n: int):
@@ -143,9 +147,6 @@ n = 40
 >       assert is_prime(n**2 + n + 41)
 E       assert False
 #+end_example
-#+REVEAL: split
-- Used to test thousands of examples for critical scientific code.
-- Potentially saves hundreds of thousands of wasted core-hours.
 
 * Key Takeaways
 #+ATTR_REVEAL: :frag (fade-in)
