@@ -22,9 +22,9 @@ Jake Faulkner
 ** What We Do
 - Support earthquake researchers at UC Civil and Natural Resources Engineering department.
 - Primary focus: Ground motion simulation software.
-
 ** Cybershake New Zealand
-#+REVEAL_HTML: <iframe height="600" width="800" src="https://www.youtube.com/embed/P7t2u61daPg?si=lIqavPHDV0hXl-Gu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+#+ATTR_HTML: :height 600px
+[[file:cybershake.png]]
 ** Researcher Outputs
 #+ATTR_HTML: :height 600px
 [[file:researcher.png]]
@@ -127,7 +127,8 @@ realisation.json
 #+END_SRC
 #+REVEAL_HTML: </div>
 #+REVEAL: split
-[[file:workflow_graph.png]]
+#+ATTR_HTML: :height 600px
+[[file:graph.png]]
 ** Hypothesis Testing
 - Used to test thousands of examples for critical scientific code.
 - Potentially saves hundreds of thousands of wasted core-hours.
